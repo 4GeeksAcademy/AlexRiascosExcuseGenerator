@@ -27,33 +27,34 @@ window.onload = function() {
     "during my lunch",
     "while I was praying",
     "while I ate"
-  ]; //Create a function that returns a vector element randomly
-  function randomMessage(lista) {
+  ];
+
+  //Create a function that returns a vector element randomly
+  function randomWord(lista) {
     // Generate a random number
     let randomNumber = Math.floor(Math.random() * lista.length);
     return lista[randomNumber] + " ";
   }
 
   // Call the function and save the result in a variable
-  var randomWord =
-    randomMessage(who) +
-    randomMessage(action) +
-    randomMessage(what) +
-    randomMessage(when);
+  let randomExcuse =
+    randomWord(who) + randomWord(action) + randomWord(what) + randomWord(when);
+
   // Show the message when refreshing the page
-  document.querySelector("#excuse").innerHTML = randomWord;
+  document.querySelector("#excuse").innerHTML = randomExcuse;
 
   // Show the message when you click the button
   document.getElementById("btn-color").addEventListener("click", () => {
-    var randomWord =
-      randomMessage(who) +
-      randomMessage(action) +
-      randomMessage(what) +
-      randomMessage(when);
-    document.getElementById("excuse").innerHTML = randomWord;
+    let randomExcuse =
+      randomWord(who) +
+      randomWord(action) +
+      randomWord(what) +
+      randomWord(when);
+
+    document.getElementById("excuse").innerHTML = randomExcuse;
   });
 };
-function btnChanger() {
+function backgroundGenerator() {
   let x_bg = Math.floor(Math.random() * 256);
   let y_bg = Math.floor(Math.random() * 256);
   let z_bg = Math.floor(Math.random() * 256);
@@ -66,13 +67,12 @@ function btnChanger() {
   let btnColor =
     "rgb(" + x_btnColor + "," + y_btnColor + "," + z_btnColor + ")";
 
-  let btn_change_bg = document.querySelector(".changeBG");
-  let changeBG = (btn_change_bg.style.background = bgColor);
+  let btn_change_bg = document.querySelector(".dinamic-background");
+  btn_change_bg.style.background = bgColor;
 
-  let x = (document.getElementById("btn-color").style.background = btnColor);
+  document.getElementById("btn-color").style.background = btnColor;
 
   let btn_text_colors = ["black", "white"];
   let random = Math.floor(Math.random() * btn_text_colors.length);
-  let y = (document.getElementById("btn-color").style.color =
-    btn_text_colors[random]);
+  document.getElementById("btn-color").style.color = btn_text_colors[random];
 }
